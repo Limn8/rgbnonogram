@@ -181,8 +181,12 @@
     font-family: inherit; transition: background .1s, border-color .1s;
   }
   .tool.active { border-color: var(--accent); background: #efe9ff; color: var(--accent); }
-  #btn-clear { flex: .9; background: #f7f0e5; border: 2px solid transparent; border-radius: 12px; color: var(--dim); font-size: 15px; cursor: pointer; font-family: inherit; }
-  #btn-clear:active { background: #efe3d0; }
+  .btn-clearall {
+    background: none; border: none; color: var(--dim); font-family: inherit;
+    font-size: 12.5px; cursor: pointer; padding: 2px 6px; align-self: flex-end;
+    text-decoration: underline dotted; text-underline-offset: 3px;
+  }
+  .btn-clearall:hover { color: var(--text); }
   .hint-note { font-size: 12px; color: var(--dim); text-align: center; width: 100%; line-height: 1.6; }
   .credit { font-size: 12px; color: #c4b3a2; text-align: center; width: 100%; margin-top: 6px; }
 
@@ -282,8 +286,9 @@
     <div class="toolbar">
       <button class="tool active" data-tool="fill" id="tool-fill">🖌️ 채우기</button>
       <button class="tool" data-tool="x" id="tool-x">❌ 표시</button>
-      <button id="btn-clear">🧹 지우기</button>
+      <button class="tool" data-tool="erase" id="tool-erase">🧹 지우기</button>
     </div>
+    <button class="btn-clearall" id="btn-clear-all">🗑️ 이 채널 전체 지우기</button>
 
     <div class="board-wrap" id="board-wrap"></div>
 
@@ -1219,6 +1224,7 @@ function setTool(t) {
   game.tool = t;
   $("#tool-fill").classList.toggle("active", t === "fill");
   $("#tool-x").classList.toggle("active", t === "x");
+  $("#tool-erase").classList.toggle("active", t === "erase");
 }
 
 let drag = null; // {val, from}
@@ -1235,9 +1241,14 @@ boardWrap.addEventListener("pointerdown", e => {
   e.preventDefault();
   const x = +cell.dataset.x, y = +cell.dataset.y;
   const cur = game.grids[game.channel][y][x];
-  const useX = e.button === 2 || game.tool === "x";
-  const val = useX ? (cur === 2 ? 0 : 2) : (cur === 1 ? 0 : 1);
-  drag = { val, from: cur };
+  let val;
+  if (game.tool === "erase") {
+    val = 0;
+  } else {
+    const useX = e.button === 2 || game.tool === "x";
+    val = useX ? (cur === 2 ? 0 : 2) : (cur === 1 ? 0 : 1);
+  }
+  drag = { val, from: cur, erase: game.tool === "erase" };
   setCell(game.channel, x, y, val);
   (val === 1 ? snd.fill : val === 2 ? snd.x : snd.erase)();
   buzz(8);
@@ -1247,7 +1258,8 @@ window.addEventListener("pointermove", e => {
   const cell = cellFromEvent(e);
   if (!cell) return;
   const x = +cell.dataset.x, y = +cell.dataset.y;
-  if (game.grids[game.channel][y][x] === drag.from)
+  if (drag.erase) setCell(game.channel, x, y, 0);
+  else if (game.grids[game.channel][y][x] === drag.from)
     setCell(game.channel, x, y, drag.val);
 });
 window.addEventListener("pointerup", () => { drag = null; });
@@ -1288,10 +1300,11 @@ function applyHl(pos) {
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => { applyHl(null); beep(560, 0.04); switchChannel(+t.dataset.ch); });
 $("#tool-fill").onclick = () => setTool("fill");
 $("#tool-x").onclick = () => setTool("x");
-$("#btn-clear").onclick = () => {
+$("#tool-erase").onclick = () => setTool("erase");
+$("#btn-clear-all").onclick = () => {
   const ch = game.channel;
   for (let y = 0; y < game.n; y++) for (let x = 0; x < game.n; x++) setCell(ch, x, y, 0);
-  toast(`${CH_NAMES[ch]} 채널을 지웠어요 🧹`);
+  toast(`${CH_NAMES[ch]} 채널을 모두 지웠어요 🗑️`);
 };
 $("#btn-hint").onclick = useHint;
 $("#btn-levels-back").onclick = () => { renderMenu(); showScreen("#screen-menu"); };
