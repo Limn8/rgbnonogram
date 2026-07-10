@@ -4,6 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>RGB 노노그램</title>
+<meta name="description" content="빨강·초록·파랑 세 장의 노노그램을 풀면 색이 실시간으로 합쳐져 숨은 픽셀아트가 완성되는 퍼즐 게임. 10×10 입문부터 20×20 고급까지, 수십 개의 스테이지를 모바일에서도 편하게 즐겨보세요.">
+<meta name="theme-color" content="#fdf3e7">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="RGB 노노그램">
+<meta property="og:description" content="빨강·초록·파랑 세 장의 노노그램을 풀면 색이 실시간으로 합쳐져 숨은 픽셀아트가 완성되는 퍼즐 게임.">
+<meta property="og:url" content="https://rgbnonogram.vercel.app/">
+<meta property="og:image" content="https://rgbnonogram.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="RGB 노노그램">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RGB 노노그램">
+<meta name="twitter:description" content="빨강·초록·파랑 세 장의 노노그램을 풀면 색이 실시간으로 합쳐져 숨은 픽셀아트가 완성되는 퍼즐 게임.">
+<meta name="twitter:image" content="https://rgbnonogram.vercel.app/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <style>
@@ -189,6 +207,8 @@
   .btn-clearall:hover { color: var(--text); }
   .hint-note { font-size: 12px; color: var(--dim); text-align: center; width: 100%; line-height: 1.6; }
   .credit { font-size: 12px; color: #c4b3a2; text-align: center; width: 100%; margin-top: 6px; }
+  .credit a { color: #c4b3a2; text-decoration: underline dotted; }
+  .credit a:hover { color: var(--dim); }
 
   /* 승리 모달 */
   #modal-win {
@@ -241,7 +261,7 @@
   <div class="logo"><span class="lr">R</span><span class="lg">G</span><span class="lb">B</span> 노노그램</div>
   <div class="tagline">빨강 · 초록 · 파랑, 세 장의 노노그램을 풀면<br>색이 퐁퐁 합쳐져 숨은 픽셀아트가 짜잔! 🎉</div>
   <div class="mode-cards" id="mode-cards"></div>
-  <div class="credit" style="margin-top:26px">제작: 경기이음온학교 임현우</div>
+  <div class="credit" style="margin-top:26px">제작: 경기이음온학교 임현우 · <a href="/privacy.html">개인정보처리방침</a></div>
 </div>
 
 <!-- ===================== 레벨 선택 ===================== -->
@@ -293,7 +313,7 @@
     <div class="board-wrap" id="board-wrap"></div>
 
     <div class="hint-note">좌클릭 채우기 · 우클릭 × · 드래그 가능 · 키보드 1/2/3 채널, X 도구 전환</div>
-    <div class="credit">제작: 경기이음온학교 임현우</div>
+    <div class="credit">제작: 경기이음온학교 임현우 · <a href="/privacy.html">개인정보처리방침</a></div>
   </div>
 </div>
 

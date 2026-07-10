@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 - RGB 노노그램</title>
+<meta name="description" content="RGB 노노그램의 개인정보처리방침입니다. 이 게임은 별도의 회원가입이나 개인정보 수집 없이 브라우저에만 진행 상황을 저장합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdf3e7; --card: #ffffff; --card-edge: #eadbc4;
+    --text: #5b4a3f; --dim: #b09f8e; --accent: #8d75e6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    background-image: radial-gradient(#f0dfc250 2.5px, transparent 2.5px);
+    background-size: 26px 26px;
+    color: var(--text);
+    font-family: "Jua", "Segoe UI", system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex; justify-content: center;
+    padding: 40px 16px;
+  }
+  main {
+    background: var(--card); border: 2px solid var(--card-edge); border-radius: 22px;
+    box-shadow: 0 5px 0 var(--card-edge);
+    max-width: 680px; width: 100%; padding: 34px 38px 40px; line-height: 1.75;
+  }
+  h1 { font-size: 26px; margin-bottom: 6px; }
+  .updated { color: var(--dim); font-size: 13px; margin-bottom: 24px; }
+  h2 { font-size: 18px; margin: 26px 0 8px; color: var(--accent); }
+  p, li { font-size: 15px; color: var(--text); }
+  ul { padding-left: 20px; margin-top: 6px; }
+  a.back {
+    display: inline-block; margin-bottom: 22px; color: var(--dim);
+    text-decoration: none; font-size: 14px; border-bottom: 1px dotted var(--dim);
+  }
+  a.back:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="/">‹ RGB 노노그램으로 돌아가기</a>
+  <h1>개인정보처리방침</h1>
+  <div class="updated">최종 수정일: 2026년 7월 10일</div>
+
+  <p>「RGB 노노그램」(이하 "본 게임")은 이용자의 개인정보를 서버로 전송하거나 수집하지 않는 정적 웹 게임입니다. 본 방침은 본 게임 이용 시 처리되는 정보에 대해 안내합니다.</p>
+
+  <h2>1. 수집하는 개인정보</h2>
+  <p>본 게임은 회원가입, 로그인, 결제 등의 기능이 없으며, 이름·이메일·전화번호 등 개인을 식별할 수 있는 정보를 수집하지 않습니다.</p>
+
+  <h2>2. 브라우저 로컬 저장소 이용</h2>
+  <p>스테이지 클리어 기록 등 게임 진행 상황은 이용자의 브라우저 <code>localStorage</code>에만 저장되며, 외부 서버로 전송되지 않습니다. 이 데이터는 브라우저 저장소를 삭제하면 함께 삭제됩니다.</p>
+
+  <h2>3. 쿠키 및 추적 기술</h2>
+  <p>본 게임은 광고, 분석, 추적을 위한 쿠키나 제3자 스크립트를 사용하지 않습니다.</p>
+
+  <h2>4. 외부 서비스</h2>
+  <ul>
+    <li>웹폰트 표시를 위해 Google Fonts(fonts.googleapis.com, fonts.gstatic.com)에서 폰트 파일을 불러옵니다. 이 과정에서 Google의 자체 정책에 따라 요청 IP 등 접속 정보가 처리될 수 있습니다.</li>
+    <li>본 게임은 Vercel을 통해 배포되며, 호스팅 과정에서 일반적인 서버 접속 로그(IP, 요청 시각 등)가 인프라 차원에서 생성될 수 있습니다.</li>
+  </ul>
+
+  <h2>5. 문의</h2>
+  <p>본 방침에 대한 문의는 제작자(경기이음온학교 임현우)에게 문의해 주세요.</p>
+</main>
+</body>
+</html>
